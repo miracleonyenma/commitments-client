@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 import tailwindForms from "@tailwindcss/forms";
 import defualtTheme from "tailwindcss/defaultTheme";
+import typography from "@tailwindcss/typography";
 
 const config: Config = {
   darkMode: "media",
@@ -64,6 +65,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate, tailwindForms],
+  plugins: [tailwindcssAnimate, tailwindForms, typography],
 };
 export default config;

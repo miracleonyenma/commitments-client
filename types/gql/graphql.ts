@@ -386,7 +386,8 @@ export type QueryOtpArgs = {
 
 
 export type QueryProjectArgs = {
-  id: Scalars['ID']['input'];
+  id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 

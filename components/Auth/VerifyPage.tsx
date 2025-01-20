@@ -37,6 +37,7 @@ const VerifyEmailPage = () => {
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
   const sent = searchParams.get("sent");
+  const userId = searchParams.get("user_id");
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
@@ -55,7 +56,7 @@ const VerifyEmailPage = () => {
     onSubmit: async (values) => {
       console.log({ values });
       toast.promise(
-        sendVerificationOTP({ email: values.email }, "/api/graphql"),
+        sendVerificationOTP({ email: values.email, userId }, "/api/graphql"),
         {
           loading: (() => {
             setLoading(true);

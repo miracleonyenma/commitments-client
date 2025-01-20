@@ -16,7 +16,7 @@ const GET = async (request: NextRequest) => {
     url.pathname = "/auth/failure";
     url.searchParams.append("name", "google");
     url.searchParams.append("error", "No code provided");
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(new URL(url.toString(), request.url));
   }
 
   try {
@@ -44,7 +44,7 @@ const GET = async (request: NextRequest) => {
     url.pathname = "/auth/failure";
     url.searchParams.append("name", "google");
     url.searchParams.append("error", error.message);
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(new URL(url.toString(), request.url));
   }
 };
 

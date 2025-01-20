@@ -38,6 +38,7 @@ import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/useUserStore";
 import Loader from "@/components/Loader";
 import registerUser from "@/utils/auth/registerUser";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 const AuthVerifyEmailPrompt: React.FC<{
   children?: ReactNode;
@@ -258,8 +259,15 @@ const AuthForm: React.FC<{
             OR
           </span>
           <Link href={googleURL} className="btn primary w-full">
-            <Google className="icon" variant="Bold" />
+            <Google className="icon" variant="Bold" color="currentColor" />
             Sign In With Google
+          </Link>
+          <Link
+            href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_API_URL}/auth/callback/github/oauth&scope=user:email`}
+            className="btn primary w-full"
+          >
+            <GitHubLogoIcon className="icon" />
+            Sign In With Github
           </Link>
         </div>
         <hr className="border border-gray-200 dark:border-gray-700" />

@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import Loader from "../Loader";
 import Image from "next/image";
 import uploadToCloudinary from "@/utils/cloudinary/uploadToCloudinary";
+import Link from "next/link";
 
 const ProfileForm: React.FC<{ user: User }> = ({ user }) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -114,7 +115,7 @@ const ProfileForm: React.FC<{ user: User }> = ({ user }) => {
                 alt={userData?.firstName || "Profile Picture"}
                 width={100}
                 height={100}
-                className="rounded-full"
+                className="h-32 w-32 rounded-full object-cover"
               />
             </div>
           )}
@@ -190,9 +191,16 @@ const ProfileForm: React.FC<{ user: User }> = ({ user }) => {
               id="email"
               type="email"
               placeholder="Email"
-              className="form-input"
               {...formik.getFieldProps("email")}
             />
+            {(!user.email || !user.emailVerified) && (
+              <Link
+                className="btn ghost text-nowrap"
+                href={`/auth/verify?user_id=${user.id}`}
+              >
+                Add Email
+              </Link>
+            )}
           </div>
           {formik.touched.email && formik.errors.email ? (
             <div className="form-error">

@@ -152,7 +152,7 @@ const AuthForm: React.FC<{
           },
     ),
     onSubmit: async (values) => {
-      console.log("🥋🥋🥋🥋🥋🥋 ~ values: ", values);
+      // console.log("🥋🥋🥋🥋🥋🥋 ~ values: ", values);
       if (type == "register") {
         toast.promise(
           registerUser(
@@ -170,7 +170,7 @@ const AuthForm: React.FC<{
               return "Registering User...";
             })(),
             success: (data) => {
-              console.log("🪵🪵🪵🪵🪵 ~ handleAuth Register:", data);
+              // console.log("🪵🪵🪵🪵🪵 ~ handleAuth Register:", data);
               setOpenPrompt(true);
               return "User Registered Successfully";
             },
@@ -214,10 +214,10 @@ const AuthForm: React.FC<{
             })(),
             success: (data) => {
               setLoading(false);
-              console.log("🪵🪵🪵🪵🪵 ~ handleAuth Login:", data);
+              // console.log("🪵🪵🪵🪵🪵 ~ handleAuth Login:", data);
 
               if (!data?.data?.login?.user?.id) {
-                console.log(data.data?.login);
+                // console.log(data.data?.login);
 
                 throw new Error("User not found");
               }

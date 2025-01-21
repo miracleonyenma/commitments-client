@@ -14,8 +14,8 @@ const GET = async (request: NextRequest) => {
     return NextResponse.redirect(url);
   }
 
-  console.log("🪵🪵🪵🪵🪵 ~ accessToken", accessToken);
-  console.log("🪵🪵🪵🪵🪵 ~ refreshToken", refreshToken);
+  // console.log("🪵🪵🪵🪵🪵 ~ accessToken", accessToken);
+  // console.log("🪵🪵🪵🪵🪵 ~ refreshToken", refreshToken);
 
   (await cookies()).set("accessToken", accessToken);
   (await cookies()).set("refreshToken", refreshToken);

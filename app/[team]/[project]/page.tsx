@@ -14,7 +14,7 @@ const handleGetProject = async ({ slug }: { slug: string }) => {
   const cookiesStore = await cookies();
   const accessToken = cookiesStore.get("accessToken")?.value;
 
-  console.log({ accessToken });
+  // console.log({ accessToken });
 
   const { project } = await getProject(
     {
@@ -33,7 +33,7 @@ const handleGetFeed = async ({ projectId }: { projectId: string }) => {
   const cookiesStore = await cookies();
   const accessToken = cookiesStore.get("accessToken")?.value;
 
-  console.log({ accessToken });
+  // console.log({ accessToken });
 
   const { feed } = await getFeed(
     {

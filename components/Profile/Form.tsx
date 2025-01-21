@@ -34,7 +34,7 @@ const ProfileForm: React.FC<{ user: User }> = ({ user }) => {
       email: Yup.string().email("Invalid email address").required("Required"),
     }),
     onSubmit: async (values) => {
-      console.log({ values });
+      // console.log({ values });
       if (file) {
         toast.promise(uploadToCloudinary(file), {
           loading: (() => {

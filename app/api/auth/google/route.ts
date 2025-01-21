@@ -9,8 +9,8 @@ const GET = async (request: NextRequest) => {
   const searchParams = request.nextUrl.searchParams;
   const url = request.nextUrl.clone();
   const code = searchParams.get("code");
-  console.log("🪵🪵🪵🪵🪵 ~ code", code);
-  console.log("🪵🪵🪵🪵🪵 ~ API_URL", API_URL);
+  // console.log("🪵🪵🪵🪵🪵 ~ code", code);
+  // console.log("🪵🪵🪵🪵🪵 ~ API_URL", API_URL);
 
   if (!code) {
     url.pathname = "/auth/failure";
@@ -21,7 +21,7 @@ const GET = async (request: NextRequest) => {
 
   try {
     const res = await handleGetGoogleSession({ code });
-    console.log("🌴🌴🌴🌴🌴 ~ res", res);
+    // console.log("🌴🌴🌴🌴🌴 ~ res", res);
 
     if (res.errors) {
       throw new Error(res.errors[0].message);

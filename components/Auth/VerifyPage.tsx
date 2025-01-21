@@ -54,7 +54,7 @@ const VerifyEmailPage = () => {
     },
     validationSchema,
     onSubmit: async (values) => {
-      console.log({ values });
+      // console.log({ values });
       toast.promise(
         sendVerificationOTP({ email: values.email, userId }, "/api/graphql"),
         {
@@ -63,7 +63,7 @@ const VerifyEmailPage = () => {
             return "Sending verifcation code to your mail...";
           })(),
           success: (data) => {
-            console.log("🪵🪵🪵🪵🪵 ~ sendVerificationOTP data:", data);
+            // console.log("🪵🪵🪵🪵🪵 ~ sendVerificationOTP data:", data);
             setUserEmail(values.email);
             setSentEmail(true);
             return "Verfication code sent successfully!";
@@ -102,7 +102,7 @@ const VerifyEmailPage = () => {
             return "Verifying your email address...";
           })(),
           success: (data) => {
-            console.log("🪵🪵🪵🪵🪵 ~ verifyEmail data:", data);
+            // console.log("🪵🪵🪵🪵🪵 ~ verifyEmail data:", data);
 
             router.push("/auth/login");
             return "Email successfully verified, redirecting you to login...";

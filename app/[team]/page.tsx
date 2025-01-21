@@ -8,7 +8,7 @@ const handleGetProjects = async ({ teamSlug }: { teamSlug: string }) => {
   const cookiesStore = await cookies();
   const accessToken = cookiesStore.get("accessToken")?.value;
 
-  console.log({ accessToken });
+  // console.log({ accessToken });
 
   const { projects } = await getProjects(
     {

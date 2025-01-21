@@ -22,7 +22,7 @@ const ForgotPassword = () => {
       email: Yup.string().email("Invalid email address").required("Required"),
     }),
     onSubmit: async (values) => {
-      console.log("🥋🥋🥋🥋🥋🥋 ~ values: ", values);
+      // console.log("🥋🥋🥋🥋🥋🥋 ~ values: ", values);
 
       toast.promise(
         requestPasswordReset({ email: values.email }, "/api/graphql"),
@@ -32,7 +32,7 @@ const ForgotPassword = () => {
             return "Requesting password reset...";
           })(),
           success: (data) => {
-            console.log("data ~", data);
+            // console.log("data ~", data);
             if (data.errors) throw Error(data.errors[0].message);
             if (!data.data?.requestPasswordReset)
               throw Error("Unable to send password reset link");

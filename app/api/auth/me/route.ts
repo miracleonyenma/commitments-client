@@ -9,7 +9,7 @@ const GET = async (request: Request) => {
   if (!accessToken) {
     // return NextResponse.redirect(new URL("/auth/register", request.url));
     const url = new URL("/auth/register", request.url);
-    console.log("🚀 ~ file: route.ts ~ line 15 ~ GET ~ url", url);
+    // console.log("🚀 ~ file: route.ts ~ line 15 ~ GET ~ url", url);
 
     return NextResponse.json({ success: false });
   }
@@ -21,7 +21,7 @@ const GET = async (request: Request) => {
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 3), // 3 days
     });
 
-  console.log("🚀 ~ file: route.ts ~ line 22 ~ GET ~ data", data);
+  // console.log("🚀 ~ file: route.ts ~ line 22 ~ GET ~ data", data);
 
   return NextResponse.json(data);
 };

@@ -6,7 +6,7 @@ const POST = async (request: Request) => {
 
   try {
     const data = await loginUser({ ...body });
-    console.log("🚀 ~ file: route.ts ~ line 13 ~ POST ~ data", data.data);
+    // console.log("🚀 ~ file: route.ts ~ line 13 ~ POST ~ data", data.data);
 
     if (data.data?.login.accessToken)
       (await cookies()).set("accessToken", data.data?.login.accessToken, {

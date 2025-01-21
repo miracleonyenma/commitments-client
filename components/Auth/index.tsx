@@ -16,26 +16,24 @@ const Auth = () => {
       });
       const data = (await res.json()) as { data: { me: User } };
       const userData = data?.data?.me;
-      console.log(
-        "🚀 ~ file: index.tsx ~ line 12 ~ handleGetUser ~ userData: ",
-        data,
-        userData,
-      );
+      // console.log(
+      //   "🚀 ~ file: index.tsx ~ line 12 ~ handleGetUser ~ userData: ",
+      //   data,
+      //   userData,
+      // );
       setUser(userData);
       return userData;
     } catch (error) {
-      console.log(
-        "🚨🚨🚨🚨🚨 ~ file: index.tsx ~ line 15 ~ handleGetUser ~ error",
-        error,
-      );
+      // console.log(
+      //   "🚨🚨🚨🚨🚨 ~ file: index.tsx ~ line 15 ~ handleGetUser ~ error",
+      //   error,
+      // );
       setUser(null);
       return null;
     }
   }, [setUser]);
 
   useEffect(() => {
-    console.log("WOW");
-
     if (!user?.id) handleGetUser();
   }, [user, handleGetUser, pathname]);
   return null;

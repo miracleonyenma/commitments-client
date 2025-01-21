@@ -25,7 +25,7 @@ const POST = async (request: NextRequest) => {
     }),
   });
 
-  console.log({ res });
+  // console.log({ res });
 
   if (!res.ok) {
     return new Response(await res.text(), { status: res.status });

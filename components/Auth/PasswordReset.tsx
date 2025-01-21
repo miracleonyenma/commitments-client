@@ -47,7 +47,7 @@ const AuthResetPassword = () => {
       ),
     }),
     onSubmit: async (values) => {
-      console.log("🥋🥋🥋🥋🥋🥋 ~ values: ", values);
+      // console.log("🥋🥋🥋🥋🥋🥋 ~ values: ", values);
       if (token)
         toast.promise(
           resetPassword({ password: values.password, token }, "/api/graphql"),
@@ -57,7 +57,7 @@ const AuthResetPassword = () => {
               return "Reseting password...";
             })(),
             success: (data) => {
-              console.log("data ~", data);
+              // console.log("data ~", data);
               if (data.errors) throw Error(data.errors[0].message);
               setTimeout(() => {
                 router.push("/auth/login");
@@ -65,7 +65,7 @@ const AuthResetPassword = () => {
               return "Password reset successfully, you'll be redirected to login page";
             },
             error: (error) => {
-              console.log("🚨🚨🚨🚨🚨🚨 ~ error", error);
+              // console.log("🚨🚨🚨🚨🚨🚨 ~ error", error);
 
               return `Something went wrong: ${error}. You can try again by clicking the forgot password link in the login page`;
             },

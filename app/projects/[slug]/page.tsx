@@ -63,14 +63,14 @@ const ProjectPage = async ({
   const slug = (await params).slug;
   try {
     const project = await handleGetProject({ slug });
-    console.log(
-      "🚀 ~ file: page.tsx ~ line 22 ~ ProjectPage ~ project",
-      project,
-    );
+    // console.log(
+    //   "🚀 ~ file: page.tsx ~ line 22 ~ ProjectPage ~ project",
+    //   project,
+    // );
     const feed = await handleGetFeed({
       projectId: project?.id as string,
     });
-    console.log("🚀 ~ file: page.tsx ~ line 27 ~ ProjectPage ~ feed", feed);
+    // console.log("🚀 ~ file: page.tsx ~ line 27 ~ ProjectPage ~ feed", feed);
 
     const relativeCreated = formatRelative(
       new Date(parseInt(project?.createdAt as string)),

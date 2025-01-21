@@ -6,12 +6,28 @@ import handleRefreshToken from "@/utils/auth/refreshToken";
 const GRAPHQL_API = process.env.NEXT_PUBLIC_GRAPHQL_API as string;
 
 export const USER_PART = `#graphql
+id
+firstName
+lastName
+picture
+email
+emailVerified
+teams {
   id
-  firstName
-  lastName
-  picture
-  email
-  emailVerified
+  name
+  slug
+  description
+  createdAt
+  updatedAt
+}
+team {
+  id
+  name
+  slug
+  description
+  createdAt
+  updatedAt
+}  
 `;
 
 const ME_QUERY = `#graphql

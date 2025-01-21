@@ -48,7 +48,10 @@ const AuthUserButton: React.FC<{ user?: User | null }> = ({ user }) => {
               </Avatar>
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-72">
+          <DropdownMenuContent
+            align="end"
+            className="w-72 border-gray-800 text-gray-50 dark:bg-gray-900"
+          >
             <DropdownMenuLabel>
               <div className="flex flex-col p-2">
                 <span className="text-xl font-semibold">
@@ -63,7 +66,7 @@ const AuthUserButton: React.FC<{ user?: User | null }> = ({ user }) => {
                 <Link href={"/account"}>Account</Link>
               </DropdownMenuItem>
               <DropdownMenuItem className="px-4 py-3" asChild>
-                <Link href={"/projects"}>Projects</Link>
+                <Link href={`/${user?.team?.slug}`}>Projects</Link>
               </DropdownMenuItem>
               <DropdownMenuItem className="px-4 py-3" disabled>
                 Upgrade to Pro

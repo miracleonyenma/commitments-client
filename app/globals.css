@@ -72,7 +72,7 @@
     @apply bg-gray-50 text-gray-700 dark:bg-gray-900 dark:text-gray-200;
   }
   .site-section {
-    @apply p-4 py-24;
+    @apply p-4 py-12 lg:py-24;
   }
   .site-section > .wrapper {
     @apply mx-auto max-w-4xl;

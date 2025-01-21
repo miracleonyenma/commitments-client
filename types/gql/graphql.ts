@@ -335,6 +335,7 @@ export type ProjectData = {
 
 export type ProjectFilter = {
   teamId?: InputMaybe<Scalars['ID']['input']>;
+  teamSlug?: InputMaybe<Scalars['String']['input']>;
   visibility?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -500,6 +501,8 @@ export type User = {
   lastName?: Maybe<Scalars['String']['output']>;
   picture?: Maybe<Scalars['String']['output']>;
   roles?: Maybe<Array<Maybe<Role>>>;
+  team?: Maybe<Team>;
+  teams?: Maybe<Array<Maybe<Team>>>;
 };
 
 export type UserData = {

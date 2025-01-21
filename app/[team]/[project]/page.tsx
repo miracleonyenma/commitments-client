@@ -58,11 +58,12 @@ const handleGetFeed = async ({ projectId }: { projectId: string }) => {
 const ProjectPage = async ({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ project: string; team: string }>;
 }) => {
-  const slug = (await params).slug;
+  const projectSlug = (await params).project;
+  const teamSlug = (await params).team;
   try {
-    const project = await handleGetProject({ slug });
+    const project = await handleGetProject({ slug: projectSlug });
     // console.log(
     //   "🚀 ~ file: page.tsx ~ line 22 ~ ProjectPage ~ project",
     //   project,
@@ -83,79 +84,7 @@ const ProjectPage = async ({
 
     return (
       <div className="site-section min-h-screen bg-gray-50 dark:bg-gray-900">
-        <div className="wrapper grid grid-cols-1 gap-6 p-4 lg:grid-cols-3">
-          {/* Main Content */}
-          <main className="lg:col-span-2">
-            <h1 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
-              Project Updates
-            </h1>
-
-            <div className="space-y-6">
-              {feed?.data?.map((entry) => {
-                const relativTime = formatRelative(
-                  new Date(parseInt(project?.createdAt as string)),
-                  new Date(),
-                );
-                const relativeUpdated = formatRelative(
-                  new Date(parseInt(entry?.updatedAt as string)),
-                  new Date(),
-                );
-                return (
-                  <article key={entry.id} className="flex flex-col gap-0">
-                    {/* Entry Header */}
-                    <div className="mb-4 flex items-center justify-between">
-                      <span className="tag">
-                        {entry.type === "changelog"
-                          ? "Changelog"
-                          : "Announcement"}
-                      </span>
-                      <time className="text-sm text-gray-500 dark:text-gray-400">
-                        {relativTime}
-                      </time>
-                    </div>
-
-                    {/* Entry Content */}
-                    <div className="prose prose-blue dark:prose-invert max-w-none rounded-t-2xl border bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                      <Markdown>{entry.content}</Markdown>
-                    </div>
-
-                    {/* Entry Details */}
-                    {entry.details && (
-                      <div className="prose prose-sm prose-blue dark:prose-invert max-w-none border border-y-0 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                        <Markdown>{entry.details}</Markdown>
-                      </div>
-                    )}
-
-                    {/* Metadata */}
-                    {entry.metadata && (
-                      <div className="flex items-center gap-4 rounded-b-2xl border bg-white p-6 text-sm text-gray-500 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                        <span className="flex items-center gap-1 capitalize">
-                          <Hierarchy2
-                            className="icon"
-                            variant="Bulk"
-                            color="currentColor"
-                          />
-                          {entry.metadata.branch}
-                        </span>
-                        <Link
-                          href={entry?.metadata?.compareUrl as string}
-                          className="btn ghost"
-                          target="_blank"
-                        >
-                          <GitHubLogoIcon
-                            className="icon"
-                            color="currentColor"
-                          />
-                          View changes
-                        </Link>
-                      </div>
-                    )}
-                  </article>
-                );
-              })}
-            </div>
-          </main>
-
+        <div className="wrapper flex !max-w-6xl flex-col-reverse gap-6 p-4 lg:grid lg:grid-cols-1 xl:grid-cols-3">
           {/* Sidebar */}
           <aside className="lg:col-span-1">
             <div className="sticky top-16">
@@ -215,6 +144,78 @@ const ProjectPage = async ({
               </div>
             </div>
           </aside>
+
+          {/* Main Content */}
+          <main className="lg:col-span-2">
+            <h1 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+              Project Updates
+            </h1>
+
+            <div className="space-y-6">
+              {feed?.data?.map((entry) => {
+                const relativTime = formatRelative(
+                  new Date(parseInt(project?.createdAt as string)),
+                  new Date(),
+                );
+                const relativeUpdated = formatRelative(
+                  new Date(parseInt(entry?.updatedAt as string)),
+                  new Date(),
+                );
+                return (
+                  <article key={entry.id} className="flex flex-col gap-0">
+                    {/* Entry Header */}
+                    <div className="mb-4 flex items-center justify-between">
+                      <span className="tag">
+                        {entry.type === "changelog"
+                          ? "Changelog"
+                          : "Announcement"}
+                      </span>
+                      <time className="text-sm text-gray-500 dark:text-gray-400">
+                        {relativTime}
+                      </time>
+                    </div>
+
+                    {/* Entry Content */}
+                    <div className="prose prose-sm lg:prose-base prose-blue dark:prose-invert max-w-none rounded-t-2xl border bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                      <Markdown>{entry.content}</Markdown>
+                    </div>
+
+                    {/* Entry Details */}
+                    {entry.details && (
+                      <div className="prose prose-sm prose-blue dark:prose-invert max-w-none border border-y-0 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                        <Markdown>{entry.details}</Markdown>
+                      </div>
+                    )}
+
+                    {/* Metadata */}
+                    {entry.metadata && (
+                      <div className="flex items-center gap-4 rounded-b-2xl border bg-white p-6 text-sm text-gray-500 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                        <span className="flex items-center gap-1 capitalize">
+                          <Hierarchy2
+                            className="icon"
+                            variant="Bulk"
+                            color="currentColor"
+                          />
+                          {entry.metadata.branch}
+                        </span>
+                        <Link
+                          href={entry?.metadata?.compareUrl as string}
+                          className="btn ghost"
+                          target="_blank"
+                        >
+                          <GitHubLogoIcon
+                            className="icon"
+                            color="currentColor"
+                          />
+                          View changes
+                        </Link>
+                      </div>
+                    )}
+                  </article>
+                );
+              })}
+            </div>
+          </main>
         </div>
       </div>
     );

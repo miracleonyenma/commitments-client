@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { handleGetGoogleSession } from "@/utils/auth/google";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+// const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
 
 const GET = async (request: NextRequest) => {

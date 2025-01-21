@@ -11,7 +11,8 @@ const Logout = () => {
   useEffect(() => {
     const handleLogout = async () => {
       const res = await fetch("/api/auth/logout");
-      const data = await res.json();
+      // const data = await res.json();
+      await res.json();
       // console.log({ data });
 
       setUser(null);

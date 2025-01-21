@@ -62,7 +62,8 @@ const VerifyEmailPage = () => {
             setLoading(true);
             return "Sending verifcation code to your mail...";
           })(),
-          success: (data) => {
+          // success: (data) => {
+          success: () => {
             // console.log("🪵🪵🪵🪵🪵 ~ sendVerificationOTP data:", data);
             setUserEmail(values.email);
             setSentEmail(true);
@@ -101,7 +102,8 @@ const VerifyEmailPage = () => {
             setLoading(true);
             return "Verifying your email address...";
           })(),
-          success: (data) => {
+          // success: (data) => {
+          success: () => {
             // console.log("🪵🪵🪵🪵🪵 ~ verifyEmail data:", data);
 
             router.push("/auth/login");

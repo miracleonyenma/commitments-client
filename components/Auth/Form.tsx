@@ -169,7 +169,8 @@ const AuthForm: React.FC<{
               setLoading(true);
               return "Registering User...";
             })(),
-            success: (data) => {
+            // success: (data) => {
+            success: () => {
               // console.log("🪵🪵🪵🪵🪵 ~ handleAuth Register:", data);
               setOpenPrompt(true);
               return "User Registered Successfully";

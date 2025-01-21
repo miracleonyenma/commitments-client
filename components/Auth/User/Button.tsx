@@ -50,7 +50,7 @@ const AuthUserButton: React.FC<{ user?: User | null }> = ({ user }) => {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className="w-72 border-gray-800 text-gray-50 dark:bg-gray-900"
+            className="w-72 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-50"
           >
             <DropdownMenuLabel>
               <div className="flex flex-col p-2">

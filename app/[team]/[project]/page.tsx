@@ -3,7 +3,7 @@ import getFeed from "@/utils/feed/getFeed";
 import getProject from "@/utils/project/getProject";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { formatRelative } from "date-fns";
-import { Buildings2, Eye, Hierarchy2, Timer, Timer1 } from "iconsax-react";
+import { Buildings2, Eye, Hierarchy2 } from "iconsax-react";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -61,7 +61,7 @@ const ProjectPage = async ({
   params: Promise<{ project: string; team: string }>;
 }) => {
   const projectSlug = (await params).project;
-  const teamSlug = (await params).team;
+  // const teamSlug = (await params).team;
   try {
     const project = await handleGetProject({ slug: projectSlug });
     // console.log(
@@ -153,14 +153,11 @@ const ProjectPage = async ({
 
             <div className="space-y-6">
               {feed?.data?.map((entry) => {
-                const relativTime = formatRelative(
+                const relativeCreated = formatRelative(
                   new Date(parseInt(project?.createdAt as string)),
                   new Date(),
                 );
-                const relativeUpdated = formatRelative(
-                  new Date(parseInt(entry?.updatedAt as string)),
-                  new Date(),
-                );
+
                 return (
                   <article key={entry.id} className="flex flex-col gap-0">
                     {/* Entry Header */}
@@ -171,18 +168,18 @@ const ProjectPage = async ({
                           : "Announcement"}
                       </span>
                       <time className="text-sm text-gray-500 dark:text-gray-400">
-                        {relativTime}
+                        {relativeCreated}
                       </time>
                     </div>
 
                     {/* Entry Content */}
-                    <div className="prose prose-sm lg:prose-base prose-blue dark:prose-invert max-w-none rounded-t-2xl border bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                    <div className="prose prose-sm prose-blue max-w-none rounded-t-2xl border bg-white p-6 shadow-sm lg:prose-base dark:prose-invert dark:border-gray-700 dark:bg-gray-800">
                       <Markdown>{entry.content}</Markdown>
                     </div>
 
                     {/* Entry Details */}
                     {entry.details && (
-                      <div className="prose prose-sm prose-blue dark:prose-invert max-w-none border border-y-0 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                      <div className="prose prose-sm prose-blue max-w-none border border-y-0 bg-white p-6 shadow-sm dark:prose-invert dark:border-gray-700 dark:bg-gray-800">
                         <Markdown>{entry.details}</Markdown>
                       </div>
                     )}

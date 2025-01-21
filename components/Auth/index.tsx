@@ -24,10 +24,10 @@ const Auth = () => {
       setUser(userData);
       return userData;
     } catch (error) {
-      // console.log(
-      //   "🚨🚨🚨🚨🚨 ~ file: index.tsx ~ line 15 ~ handleGetUser ~ error",
-      //   error,
-      // );
+      console.log(
+        "🚨🚨🚨🚨🚨 ~ file: index.tsx ~ line 15 ~ handleGetUser ~ error",
+        error,
+      );
       setUser(null);
       return null;
     }

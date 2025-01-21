@@ -6,7 +6,7 @@ export default function Home() {
     <main>
       <section className="site-section">
         <div className="wrapper flex !max-w-5xl flex-col items-center gap-4">
-          <h1 className="text-center text-5xl font-bold tracking-tight lg:text-8xl">
+          <h1 className="text-center text-6xl font-bold tracking-tight lg:text-8xl">
             Focus on building, not announcing.
           </h1>
           <p className="mx-auto max-w-3xl text-center text-lg lg:w-4/5 lg:text-xl">

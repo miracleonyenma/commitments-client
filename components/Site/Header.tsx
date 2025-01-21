@@ -8,7 +8,7 @@ import AuthUserButton from "@/components/Auth/User/Button";
 const SiteHeader = () => {
   const { user } = useUserStore();
   return (
-    <header className="site-header sticky top-0 z-30 w-full py-4">
+    <header className="site-header sticky top-0 z-30 w-full p-3">
       <div className="wrapper mx-auto flex max-w-4xl justify-between gap-4 rounded-2xl bg-white p-3 dark:border-gray-700 dark:bg-gray-900">
         <Link href="/">
           <SiteLogo />

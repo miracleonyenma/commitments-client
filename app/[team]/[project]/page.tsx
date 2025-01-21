@@ -154,7 +154,7 @@ const ProjectPage = async ({
             <div className="space-y-6">
               {feed?.data?.map((entry) => {
                 const relativeCreated = formatRelative(
-                  new Date(parseInt(project?.createdAt as string)),
+                  new Date(parseInt(entry?.createdAt as string)),
                   new Date(),
                 );
 

@@ -35,13 +35,16 @@ const ProjectsPage = async ({
   params: Promise<{ team: string }>;
 }) => {
   const teamSlug = (await params).team;
-
   let projectsData = null;
-  try {
-    projectsData = await handleGetProjects({ teamSlug });
-  } catch (error) {
-    console.log("🚨 Error getting feed: ", error);
-    projectsData = null;
+
+  if (teamSlug.includes("-")) {
+    // Team slug is in format of team-slug
+    try {
+      projectsData = await handleGetProjects({ teamSlug });
+    } catch (error) {
+      console.log("🚨 Error getting feed: ", error);
+      projectsData = null;
+    }
   }
 
   return (

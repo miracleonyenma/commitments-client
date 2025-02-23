@@ -1,7 +1,8 @@
-const PostPage = async ({ params }: { params: { id: string } }) => {
+const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const id = (await params).id;
   return (
     <main>
-      <h1>Post Page {params.id}</h1>
+      <h1>Post Page {id}</h1>
     </main>
   );
 };
